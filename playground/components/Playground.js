@@ -19,21 +19,21 @@ class Playground extends React.Component {
     };
 
     this.dispatcherIds = [];
-  }
+  };
 
   componentDidMount() {
     this.dispatcherIds.push(dispatcher.register(this._onChange));
-  }
+  };
 
   componentWillUnmount() {
     this.dispatcherIds.forEach((id) => dispatcher.unregister(id));
-  }
+  };
 
   _onChange(payload) {
     if (payload.type === actionTypes.MSON_PARSED) {
       this.setState({ parseResult: payload });
     }
-  }
+  };
 
   render() {
     return (
@@ -45,19 +45,13 @@ class Playground extends React.Component {
         </div>
 
         <div className="column">
-          <JsonFormatterComponent
-            element={this.state.parseResult.attributes}
-          />
-        </div>
-
-        <div className="column">
           <AttributesKit.Attributes
             element={this.state.parseResult.attributes}
           />
         </div>
       </div>
     );
-  }
+  };
 }
 
 export default Playground;
